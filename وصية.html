@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Dark Cases</title>
+<style>
+    /* الإعدادات العامة */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000; /* شاشة القفل أولاً سوداء */
+        overflow: hidden;
+    }
+
+    /* شاشة الهاتف */
+    .phone {
+        width: 300px;
+        height: 500px;
+        border: 3px solid #333;
+        border-radius: 30px;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .phone input {
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+        width: 150px;
+        border-radius: 5px;
+        border: 1px solid #555;
+        background: #111;
+        color: #fff;
+    }
+
+    .phone button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        background: #333;
+        color: white;
+    }
+
+    /* الصفحة بعد فتح القفل */
+    #mainContent {
+        display: none;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: #1e1e1e; /* رمادي غامق */
+        color: #fff; /* الكتابة أبيض */
+        text-align: center;
+        padding: 30px;
+        font-size: 13px;
+        line-height: 1.8;
+        pointer-events: none; /* منع التحديد */
+        user-select: none; /* منع النسخ */
+        overflow: auto;
+    }
+
+    /* خلفية DARK CASES كبيرة */
+    .background-text {
+        position: absolute;
+        font-size: 120px;
+        color: rgba(255,255,255,0.05);
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+    }
+</style>
+</head>
+<body>
+
+<!-- شاشة القفل -->
+<div class="phone" id="lockScreen">
+    <h3 style="color:white;">ادخل الرمز</h3>
+    <input type="password" id="codeInput" placeholder="•••••">
+    <button onclick="checkCode()">فتح</button>
+</div>
+
+<!-- المحتوى الرئيسي -->
+<div id="mainContent">
+    <div class="background-text">DARK CASES</div>
+    <div id="content">
+        <b>
+        لم أكن أعلم حقيقة ما كنا نستثمر فيه…<br>
+        على الأقل، ليس في البداية. كل شيء كان يبدو نظيفًا… منظمًا… ومقنعًا.<br>
+        أو ربما كنت أختار أن لا أرى الحقيقة.<br><br>
+        هناك مشروع… مشروع لا وجود له على الورق.<br>
+        لا سجلات، لا موافقات، لا أثر له في أي تقرير رسمي…<br>
+        ومع ذلك، آثاره موجودة… وبشكل لا يمكن تجاهله.<br>
+        كنت أظن أنني محاط بأشخاص يمكن الوثوق بهم.<br>
+        كنت مخطئًا.<br>
+        لم أكن أعلم أنه سيخونني… ليس بهذه الطريقة.<br>
+        لم أكن أعلم أن الولاء هنا مؤقت… وأن لكل شيء ثمنه.<br>
+        لم أكن أعلم أنها قد باعت كل شيء مسبقًا…<br>
+        بابتسامة هادئة، وتوقيعات لا يُفترض أن يراها أحد.<br>
+        أما القانون… فكنت أعتقد أنه سيحميني.<br>
+        لكن يبدو أن هناك من لا يدافع عن الحقيقة… بل يدفنها.<br>
+        حاولت الانسحاب…<br>
+        فقيل لي إن بعض الأبواب لا تُفتح مرتين…<br>
+        وإن الخروج ليس خيارًا يُسمح به.<br><br>
+        الآن… هناك شخص لا أعرفه.<br>
+        بلا اسم… بلا وجه…<br>
+        مجرد حضور يقترب أكثر مع كل يوم.<br>
+        إذا حدث لي شيء…<br>
+        فليكن واضحًا أن هذا لم يكن خياري.<br>
+        هناك من يراقب…<br>
+        وهناك من يقرر من يبقى…<br>
+        ومن يختفي.
+   </b>
+ </div>
+
+</div>
+
+<script>
+function checkCode() {
+    const code = document.getElementById("codeInput").value;
+    if (code === "27911") {
+        // إخفاء شاشة القفل وإظهار الصفحة
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+
+        // تعطيل النسخ والتحديد
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+        document.addEventListener('mousedown', e => e.preventDefault());
+        document.addEventListener('keydown', e => e.preventDefault()); // لمنع أي اختصارات
+    } else {
+        alert("رمز خاطئ");
+    }
+}
+</script>
+
+</body>
+</html>
